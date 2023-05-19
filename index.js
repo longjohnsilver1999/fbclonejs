@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const helmet = require("helmet");
 const morgan = require("morgan");
 const route = require("./routes/profile");
+const authroute = require("./routes/auth");
 dotenv.config();
 
 mongoose
@@ -22,6 +23,7 @@ app.use(helmet());
 app.use(morgan("common"));
 //
 app.use("/api/profile", route);
+app.use("/api/auth", authroute);
 app.get("/", (req, res) => {
   res.send("welcome to feed");
 });
